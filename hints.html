@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Hints</title>
+
+	<link rel="stylesheet" href="moar-styles.css">
+	<style>
+		details {
+			font-size: 20px;
+			font-family: 'Courier New', Courier, monospace;
+			cursor: pointer;
+		}
+		.done * {
+			text-decoration: line-through;
+		}
+		li {
+			opacity: 0;
+			transition: opacity .8s;
+		}
+		li:focus-within, li:hover {
+			opacity: 1;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Things to ask to improve the accessibility of a page</h1>
+	<p>In no particular order. Hover or tab to see hints. Click for greater hintiness.</p>
+	<ul>
+		<li>
+			<details>
+				<summary>Does the page make sense if the images don't load?</summary>
+				<p>
+					Is all the important information still there? Is it still clear what all the controls do?
+				</p>
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>Is the page usable if the CSS doesn't load?</summary>
+				<p>It's not going to be pretty, but is all the information on the page still available?</p>
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>Can you navigate the page using a keyboard?</summary>
+				<p>Can you keep track of where you are? Do all the controls work?</p>
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>Can you navigate the page on a touchscreen?</summary>
+				<p>Are all the touch targets big enough? Do all the controls work?</p>
+			</details>
+		</li>
+		<li>Does the page make sense on a small screen, zoomed in, and in high contrast mode?</li>
+		<li>
+			<details>
+				<summary>Does the page make sense to a screen reader?</summary>
+				<p>
+					Does it have landmarks? Is it keyboard navigable? Do all the controls have meaningful names? 
+					Do all the aria roles make sense? Are they necessary? Would a screen reader user be notified
+					of everything that happens on the page?
+				</p>
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>Is everything labelled clearly?</summary>
+				<p>
+					Are the labels clearly visible? Is it obvious what they're referring to?
+					Are they easy to understand? Do they stay in place when the user types in the field?
+				</p>
+			</details>
+		</li>
+	</ul>
+	<button onclick="resetAll()">Uncheck everything</button>
+	<script>const storageKey = "hints";</script>
+	<script src="checkbox.js"></script>
+</body>
+</html>

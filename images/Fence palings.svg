@@ -1,0 +1,7 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke-width="4" stroke="black" fill="none">
+	<path d="M2 8 L2 99 l16 0 L18 8 10 2 Z" />
+	<path transform="translate(20)" d="M2 8 L2 99 l16 0 L18 8 10 2 Z" />
+	<path transform="translate(40)" d="M2 8 L2 99 l16 0 L18 8 10 2 Z" />
+	<path transform="translate(60)" d="M2 8 L2 99 l16 0 L18 8 10 2 Z" />
+	<path transform="translate(80)" d="M2 8 L2 99 l16 0 L18 8 10 2 Z" />	
+</svg>

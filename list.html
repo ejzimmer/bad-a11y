@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>List of Issues</title>
+
+	<link rel="stylesheet" href="moar-styles.css">
+</head>
+<body>
+	<h1>Issues</h1>
+	<p>Here's a bunch of things I, well, deliberately put on the page. I'm sure there's others.</p>
+
+	<p>Some things are specific to making the page work better for screen readers</p>
+
+	<ul>
+		<li>
+			&lt;h4&gt; tags without &lt;h1&gt;, &lt;h2&gt;, or &lt;h3&gt;.
+			Screen readers use h elements to build an outline of the page, and if all the elements
+			aren't there, then it doesn't make sense.
+		</li>
+		<li>
+			The search button has an invalid aria role. Confusion ensues. You can actually give the search
+			input an aria-role of "search", which will make it a landmark that the screen reader can tell 
+			its user about
+		</li>
+		<li>
+			The cart button has a valid aria role, but it's wrong. Further confusion ensues.
+			Seriously, just use semantic elements rather than manually adding aria roles. (Ok,
+			you do need aria-roles when creating elements that don't have a semantic HTML element, like tabs.
+			But mostly you don't need them)
+		</li>
+		<li>
+			The close button on the cart items list has a label of 'x', which is a bit weird for a screen reader,
+			as it'll just read out 'x'. An image + the word close would be better. (Also, the button doesn't actually 
+			work, but that's not just a problem for screen readers!)
+		</li>
+		<li>
+			Lists of things should be marked up as lists, so that a screen reader will announce the list + the 
+			number of items in it. Menu links, items and footer links are all lists. I mean, arguably, this is 
+			also beneficial to developers reading your code, but eh... AA compliance means putting your nav links
+			in a &lt;ul&gt; inside a &lt;nav&gt; element, which I find a little weird.
+		</li> 
+	</ul>
+
+	<p>Most things aren't specific to screen readers though - they're going to cause problems for lots of other people too.</p>
+	<ul>
+		<li>
+			No alt tags on the heading image, or images of items. Obviously this is a problem for screen readers.
+			But adding an alt tag will also help users who are on slow connections, when an image doesn't load.
+		</li>
+		<li>
+			So, I know Lighthouse says the page passes this one, but I'm not sure why. Screen reader users use landmark
+			regions like header, nav, main, and footer to navigate. Although this page has a header, nav, footer, and
+			main section, none of them are marked up using semantic elements, so a screen reader won't recognise them.
+			Using semantic elements doesn't just help screen readers though.
+			It also helps your page display in reading apps, like Safari reader mode and Pocket. And it makes it
+			easier for other developers to understand your code - including your future self!
+		</li>
+ 		<li>
+			The search input is labelled only by placeholder - this is usually considered less accessible, as 
+			the label goes away when you start typing. Not necessarily a huge issue here, but can be problematic
+			if your placeholder contains, for example, a date field format like DD/MM/YYYY.
+		</li>
+		<li>
+			The page is pretty much unusable for keyboard users, as it doesn't have any focus indicators anywhere.
+			Keyboard inputs are often used by people with motor difficulties, as well as "power" users, like
+			developers! The WCAG guidelines suggest keeping the browser default focus rings, but, I think we can 
+			agree that they look pretty crap. I find outline: 1px dashed currentColor makes a 
+			good default focus indicator, as it matches the text of the current element. 
+		</li>
+		<li>
+			The search button, cart button and cart close button are all divs instead of buttons. By default, browsers let you tab to
+			buttons, and you can click them by hitting enter or space. If you use elements other than buttons, then
+			you've got to add all that stuff manually, as well as applying the proper aria roles so they appear in 
+			the accessibility tree. Just use a button.
+		</li>
+		<li>
+			The search button and cart button have no accessible label. If the image doesn't load for whatever reason,
+			or the user can't see or understand it, they have no way of knowing what the button does. And the 
+			meaning of icons isn't necessarily as obvious as you might think - for example, does a magnifying glass 
+			mean search, or zoom? It might seem obvious in this context, but that's not always the case.
+		</li>
+		<li>
+			The list of items in the cart only appears on hover. It won't work on touchscreens. It also makes life difficult for 
+			people who have trouble with fine motor control, which could be due to a disability, or because 
+			they're on a train and it's bumpy.
+		</li>
+		<li>
+			The checkout button potentially should be a link, as it goes to another page. When you mouseover or
+			focus a link with an href attribute, the browser shows you what the link points to. In this case,
+			you could also consider making the cart a form with a submit, depending on how your page works.
+		</li>
+		<li>
+			The main section (where the list of items appears) should probably have some kind of heading indicating
+			what kinds of things we're looking at.
+		</li>
+		<li>
+			There's no indication that the item has been added to the cart if you can't see the cart icon (either 
+			because you're using a screen reader, or because it's off-screen). You could fix this for screen readers
+			by using an aria-live area. This won't help non-screen reader users on smaller screens though. I'd 
+			probably use a combination of the live area and an animation or indication on the element that was clicked.
+		</li>
+		<li>
+			The icon font link in the footer doesn't go anywhere. Screen readers will read out a list of all the 
+			links on the page so users can work out where else they can go. This link that goes nowhere is just
+			wasting their time. It also can't be activated using the space bar like a button would be able to, so
+			it's annoying for keyboard users. Better to use a button.
+		</li>
+		<li>
+			In addition to being a link, the icon font attribution text only appears on hover, so it won't work
+			on touchscreens. It also triggers text to appear above itself, which isn't going to be apparent to a 
+			screen reader user, but it might also not be visible to someone on a small or low-resolution screen,
+			or with the screen zoomed in, as they might already have scrolled past it. Plus it doesn't actually 
+			attribute the font to anyone. Because of, um, reasons.
+		</li>	
+		<li>
+			In addition to all the bad colour contrasts listed by Lighthouse, the search placeholder and 
+			"nothing in your cart" text don't have high enough contrast. I guess Lighthouse didn't try 
+			buying any flat tyres.
+		</li>
+		<li>
+			The search bar doesn't work great on small screens or at high screen magnification
+		</li>
+		<li>
+			The "about" and "contact" links in the footer should also probably be in a &lt;nav&gt; element.
+			You could add an aria-label to distinguish this site-wide nav from the categories nav.
+		</li>
+		<li>
+			And something that has nothing to do with accessibility - the spacer element in the 
+			footer is purely for layout, and has nothing to do with the document structure. There are more 
+			semantic ways to create the same effect - you could group the elements at the left of the footer 
+			together in a div (or nav), and group the elements at the right, then apply flex-grow to one of them.
+			Or you could add a class to the last element before the gap and use that to control the spacing and 
+			the dividers. (You could even do it without a class, using :nth-child(), but that feels a little 
+			brittle to me).
+		</li>
+	</ul>
+	<button onclick="resetAll()">Uncheck everything</button>
+
+	<script>const storageKey = "list";</script>
+	<script src="checkbox.js"></script>
+
+</body>
+</html>

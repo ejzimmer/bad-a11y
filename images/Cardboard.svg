@@ -1,0 +1,5 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke-width="4" stroke="black" fill="none">
+  <rect x="2" y="2" width="80" height="92" transform="skewY(2)" />
+	<rect x="82" y="10.5" width="10" height="92" transform="skewY(-4)" />
+	<path stroke-width="2" transform="skewY(-4)" d="M91 10 l-7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0 -7 6 7 0" />
+</svg>
